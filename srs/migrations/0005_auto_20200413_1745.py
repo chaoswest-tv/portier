@@ -14,6 +14,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='streamkey',
             name='key',
-            field=models.CharField(default=uuid.UUID('b5777854-4533-49dc-b38d-69738d8844d6'), max_length=64, unique=True),
+            field=models.CharField(default=uuid.UUID('b5777854-4533-49dc-b38d-69738d8844d6'),
+                                   max_length=64, unique=True),
         ),
     ]

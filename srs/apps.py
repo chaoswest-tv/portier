@@ -5,4 +5,4 @@ class SrsConfig(AppConfig):
     name = 'srs'
 
     def ready(self):
-        import srs.signals  #noqa
+        import srs.signals  # noqa

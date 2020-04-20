@@ -10,10 +10,12 @@ from srs.models import Streamkey
 
 logger = logging.getLogger(__name__)
 
+
 @receiver(on_unpublish)
 def callback_on_unpublish(sender, **kwargs):
     logger.info("stop publish - {}".format(kwargs['name']))
-    celery.send_task('main.stop_restream', kwargs={'name':kwargs['name']})
+    celery.send_task('main.stop_restream', kwargs={'name': kwargs['name']})
+
 
 @receiver(on_publish)
 def callback_on_publish(sender, **kwargs):

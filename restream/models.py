@@ -2,7 +2,8 @@ from django.db import models
 
 # Create your models here.
 
-from srs.models import Application, Streamkey
+from srs.models import Streamkey
+
 
 class RestreamConfig(models.Model):
     streamkey = models.ForeignKey(Streamkey, on_delete=models.CASCADE)
