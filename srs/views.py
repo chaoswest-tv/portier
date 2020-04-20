@@ -27,8 +27,8 @@ def callback(request):
     except KeyError:
         return HttpResponse('1', status=401)
     try:
-        app = models.Application.objects.get(name=app_name)
-        streamkey = models.Streamkey.objects.get(key=stream_name)
+        application = models.Application.objects.get(name=app_name)
+        streamkey = models.Streamkey.objects.get(key=stream_name, application=application)
 
     except ObjectDoesNotExist:
         return HttpResponse('1', status=401)
