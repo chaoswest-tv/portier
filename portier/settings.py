@@ -127,8 +127,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 # Celery
-CELERY_BROKER_URL = "redis://{}:{}".format(os.environ.get('REDIS_HOST', default='redis'), os.environ.get('REDIS_PORT', default=6379))
-CELERY_RESULT_BACKEND = "redis://{}:{}".format(os.environ.get('REDIS_HOST', default='redis'), os.environ.get('REDIS_PORT', default=6379))
+CELERY_BROKER_URL = "redis://{}:{}".format(os.environ.get('REDIS_HOST', default='redis'),
+                                           os.environ.get('REDIS_PORT', default=6379))
+CELERY_RESULT_BACKEND = "redis://{}:{}".format(os.environ.get('REDIS_HOST', default='redis'),
+                                               os.environ.get('REDIS_PORT', default=6379))
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
