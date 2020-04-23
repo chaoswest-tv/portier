@@ -20,12 +20,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '-xcxbgd8w&w&nv0-e!5=kd%u5esjt07$h5*+$goica9nc$l!(9'
+SECRET_KEY = os.environ.get("SECRET_KEY", default="CHANGE_ME!")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['*']
+DEBUG = int(os.environ.get("DEBUG", default=0))
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", default="*").split(" ")
 
 
 # Application definition
@@ -76,9 +75,13 @@ WSGI_APPLICATION = 'portier.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    "default": {
+        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
+        "NAME": os.environ.get("SQL_DATABASE", os.path.join(BASE_DIR, "db.sqlite3")),
+        "USER": os.environ.get("SQL_USER", "portier"),
+        "PASSWORD": os.environ.get("SQL_PASSWORD", "portier"),
+        "HOST": os.environ.get("SQL_HOST", "postgres"),
+        "PORT": os.environ.get("SQL_PORT", "5432"),
     }
 }
 
@@ -120,10 +123,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
-CELERY_BROKER_URL = 'redis://localhost:6379'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+# Celery
+CELERY_BROKER_URL = "redis://{}:{}".format(os.environ.get('REDIS_HOST', default='redis'), os.environ.get('REDIS_PORT', default=6379))
+CELERY_RESULT_BACKEND = "redis://{}:{}".format(os.environ.get('REDIS_HOST', default='redis'), os.environ.get('REDIS_PORT', default=6379))
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'

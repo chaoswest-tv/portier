@@ -1,11 +1,12 @@
 from django.db import models
+from django.utils.translation import gettext as _
 import uuid
 
 from . import signals
 
 
 class Application(models.Model):
-    name = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=100, unique=True, help_text=_("srs_application_name"))
 
     def __str__(self):
         return self.name

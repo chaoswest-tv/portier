@@ -1,0 +1,29 @@
+version: '2.4'
+
+services:
+  web:
+    build: .
+    ports:
+      - 8000:8000
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      DEBUG: 1
+      SECRET_KEY: "D4mn1t_Ch4nG3_M3!1!!"
+      SQL_ENGINE: django.db.backends.postgresql
+      SQL_USER: portier
+      SQL_PASSWORD: portier
+      SQL_DATABASE: portier
+      SQL_HOST: postgres
+      SQL_PORT: 5432
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+  redis:
+    image: redis:5-alpine
+  postgres:
+    image: postgres:11.7-alpine
+    environment:
+      POSTGRES_PASSWORD: "portier"
+      POSTGRES_USER: "portier"
+      POSTGRES_DB: "portier"
