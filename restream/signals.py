@@ -1,12 +1,12 @@
 import logging
 
 from django.dispatch import receiver
-from srs.signals import on_publish, on_unpublish
+from rtmp.signals import on_publish, on_unpublish
 
 from portier.celery import app as celery
 
 from .models import RestreamConfig
-from srs.models import Streamkey
+from rtmp.models import Stream
 
 logger = logging.getLogger(__name__)
 
@@ -20,13 +20,12 @@ def callback_on_unpublish(sender, **kwargs):
 @receiver(on_publish)
 def callback_on_publish(sender, **kwargs):
     logger.info("start publish - {}".format(kwargs['name']))
-    streamkey = Streamkey.objects.get(key=kwargs['streamkey'])
-    configs = RestreamConfig.objects.filter(streamkey=streamkey)
+    stream = Stream.objects.get(key=kwargs['stream'])
+    configs = RestreamConfig.objects.filter(stream=stream)
     for config in configs:
-        pass
         celery.send_task('main.start_restream', kwargs={
             'app': kwargs['app'],
-            'streamkey': kwargs['streamkey'],
+            'stream': kwargs['stream'],
             'target': config.target,
             'id': config.id
         })

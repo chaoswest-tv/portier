@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'srs.apps.SrsConfig',
+    'rtmp.apps.RtmpConfig',
     'restream.apps.RestreamConfig',
 ]
 

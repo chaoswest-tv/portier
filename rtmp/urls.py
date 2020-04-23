@@ -2,5 +2,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('callback', views.callback, name='callback'),
+    path('callback/srs', views.callback_srs, name='callback_srs'),
 ]

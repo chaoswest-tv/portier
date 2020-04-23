@@ -6,38 +6,32 @@ from . import signals
 
 
 class Application(models.Model):
-    name = models.CharField(max_length=100, unique=True, help_text=_("srs_application_name"))
+    name = models.CharField(max_length=100, unique=True, help_text=_("rtmp_application_name"))
 
     def __str__(self):
         return self.name
 
 
-class Streamkey(models.Model):
+class Stream(models.Model):
     application = models.ForeignKey(Application, on_delete=models.CASCADE)
-    key = models.CharField(max_length=64, unique=True, default=uuid.uuid4())
+    stream = models.CharField(max_length=64, unique=True, default=uuid.uuid4)
     name = models.CharField(max_length=100)
 
-    def on_publish(self, client_ip, client_id, vhost, param):
+    def on_publish(self, param):
         signals.on_publish.send(sender=self.__class__,
                                 name=self.name,
-                                streamkey=self.key,
+                                stream=self.stream,
                                 app=str(self.application),
-                                client_ip=client_ip,
-                                client_id=client_id,
-                                vhost=vhost,
                                 param=param
                                 )
 
-    def on_unpublish(self, client_ip, client_id, vhost, param):
+    def on_unpublish(self, param):
         signals.on_unpublish.send(sender=self.__class__,
                                   name=self.name,
-                                  streamkey=self.key,
+                                  stream=self.stream,
                                   app=str(self.application),
-                                  client_ip=client_ip,
-                                  client_id=client_id,
-                                  vhost=vhost,
                                   param=param
                                   )
 
     def __str__(self):
-        return '{}'.format(self.name)
+        return self.name
