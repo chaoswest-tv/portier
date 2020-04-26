@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'fa',
     'portal.apps.PortalConfig',
     'rtmp.apps.RtmpConfig',
+    'concierge.apps.ConciergeConfig',
     'restream.apps.RestreamConfig',
 ]
 

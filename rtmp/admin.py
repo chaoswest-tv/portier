@@ -7,7 +7,7 @@ class ApplicationAdmin(admin.ModelAdmin):
 
 
 class StreamAdmin(admin.ModelAdmin):
-    fields = ['application', 'stream', 'name']
+    fields = ['application', 'stream', 'name', 'publish_counter']
 
 
 admin.site.register(Application, ApplicationAdmin)
