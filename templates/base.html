@@ -1,0 +1,22 @@
+{% load bootstrap4 %}
+{% load font_awesome %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{% block 'title' %}portier{% endblock %}</title>
+    {% bootstrap_css %}
+    {% fa_css %}
+    {% bootstrap_javascript jquery='full' %}
+  </head>
+
+  <body>
+    {% bootstrap_messages %}
+    {% block 'body' %}
+    {% endblock %}
+  </body>
+</html>
