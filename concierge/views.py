@@ -1,5 +1,4 @@
 import json
-import logging
 
 from django.db import transaction
 from django.http import JsonResponse
