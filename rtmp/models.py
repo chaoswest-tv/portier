@@ -14,7 +14,7 @@ class Application(models.Model):
 
 class Stream(models.Model):
     application = models.ForeignKey(Application, on_delete=models.CASCADE)
-    stream = models.CharField(max_length=64, unique=True, default=uuid.uuid4)
+    stream = models.UUIDField(unique=True, default=uuid.uuid4)
     name = models.CharField(max_length=100)
 
     # the same stream uuid can be published multiple times to different origin
@@ -28,7 +28,7 @@ class Stream(models.Model):
         # is now being considered active
         if self.publish_counter < 1:
             signals.stream_active.send(sender=self.__class__,
-                                       stream=self.stream,
+                                       stream=str(self.stream),
                                        param=param
                                        )
 
@@ -45,7 +45,7 @@ class Stream(models.Model):
         # considered inactive
         if self.publish_counter < 1:
             signals.stream_inactive.send(sender=self.__class__,
-                                         stream=self.stream,
+                                         stream=str(self.stream),
                                          param=param
                                          )
         self.save()

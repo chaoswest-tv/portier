@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Identity, Task, Claim
+from .models import Identity, Task
 
 
 class IdentityAdmin(admin.ModelAdmin):
@@ -7,13 +7,8 @@ class IdentityAdmin(admin.ModelAdmin):
 
 
 class TaskAdmin(admin.ModelAdmin):
-    fields = ['stream', 'type', 'configuration']
-
-
-class ClaimAdmin(admin.ModelAdmin):
-    fields = ['owner', 'task']
+    fields = ['stream', 'type', 'configuration', 'claimed_by']
 
 
 admin.site.register(Identity, IdentityAdmin)
 admin.site.register(Task, TaskAdmin)
-admin.site.register(Claim, ClaimAdmin)
