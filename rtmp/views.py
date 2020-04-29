@@ -1,9 +1,14 @@
 import json
 import logging
 
-from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
 from django.core.exceptions import ObjectDoesNotExist
+from django.http import HttpResponse
+from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
+from django.contrib.admin.utils import NestedObjects
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import ListView, DetailView, CreateView, DeleteView
 
 from . import models
 
@@ -40,3 +45,36 @@ def callback_srs(request):
         stream.on_unpublish(param=param)
 
     return HttpResponse('0')
+
+
+@method_decorator(login_required, name='dispatch')
+class StreamList(ListView):
+    model = models.Stream
+
+
+@method_decorator(login_required, name='dispatch')
+class StreamDetail(DetailView):
+    model = models.Stream
+
+
+@method_decorator(login_required, name='dispatch')
+class StreamCreate(CreateView):
+    model = models.Stream
+    fields = ["name", "application"]
+
+
+@method_decorator(login_required, name='dispatch')
+class StreamDelete(DeleteView):
+    model = models.Stream
+    success_url = reverse_lazy('rtmp:stream_list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        collector = NestedObjects(using='default')
+        collector.collect([self.object])
+
+        context['to_delete'] = collector.nested()
+
+        print(context['to_delete'])
+        return context

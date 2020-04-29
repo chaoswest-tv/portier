@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block 'content' %}
+  <h1>Login</h1>
+<div class="row">
+  <div class="col-sm border-right">
+    <form method="post">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      {% buttons %}
+        <button type="submit" class="btn btn-primary" value="login">
+          Submit
+        </button>
+      {% endbuttons %}
+      <input type="hidden" name="next" value="{{ next }}">
+    </form>
+    <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+  </div>
+  <div class="col-sm">
+  </div>
+</div>
+{% endblock %}

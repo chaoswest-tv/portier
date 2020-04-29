@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block 'content' %}
+  <h6>Create new stream configuration</h6>
+  <hr class="my-4">
+<div class="row">
+  <div class="col-sm border-right">
+    <form method="post">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      {% buttons %}
+        <button type="submit" class="btn btn-primary" value="login">
+          Submit
+        </button>
+      {% endbuttons %}
+      <input type="hidden" name="next" value="{{ next }}">
+    </form>
+  </div>
+  <div class="col-sm">
+    <p>Enter a descriptive name, and select one of the applications.</p>
+  </div>
+</div>
+{% endblock %}

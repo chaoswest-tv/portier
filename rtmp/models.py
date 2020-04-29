@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.utils.translation import gettext as _
 import uuid
 
@@ -7,6 +8,9 @@ from . import signals
 
 class Application(models.Model):
     name = models.CharField(max_length=100, unique=True, help_text=_("rtmp_application_name"))
+
+    def class_name(self):
+        return self.__class__.__name__
 
     def __str__(self):
         return self.name
@@ -49,6 +53,12 @@ class Stream(models.Model):
                                          param=param
                                          )
         self.save()
+
+    def get_absolute_url(self):
+        return reverse('rtmp:stream_detail', kwargs={'pk': self.pk})
+
+    def class_name(self):
+        return self.__class__.__name__
 
     def __str__(self):
         return self.name

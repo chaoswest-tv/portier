@@ -11,5 +11,8 @@ class RestreamConfig(models.Model):
     name = models.CharField(max_length=100)
     active = models.BooleanField()
 
+    def class_name(self):
+        return self.__class__.__name__
+
     def __str__(self):
         return '{} to {}'.format(self.stream, self.name)

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load font_awesome %}
+{% block 'content' %}
+  <h6>Create new stream configuration</h6>
+  <hr class="my-4">
+<div class="row">
+  <div class="col-sm border-right">
+    <form method="post">
+      {% csrf_token %}
+      <div class="alert alert-warning" role="alert">
+        When deleting a Stream configuration, you will also delete all other configurations that depend on this stream!
+      </div>
+      <p>Are you sure you want to delete the Stream configuration "{{ object }}"?</p>
+      {% buttons %}
+        <button type="submit" class="btn btn-danger" value="login">
+          {% fa 'trash' %} Delete
+        </button>
+      {% endbuttons %}
+      <input type="hidden" name="next" value="{{ next }}">
+    </form>
+  </div>
+  <div class="col-sm">
+    <h5>Deleting configurations</h5>
+    <ul>
+      {% for object in to_delete %}
+      {% if object.name %}
+      <li>
+        <strong>{{ object.name }}</strong> - <span>{{ object.class_name }}</span>
+      </li>
+      {% else %}
+      <ul>
+        {% for nested_object in object %}
+        <li>
+          <strong>{{ nested_object.name }}</strong> - <span>{{ nested_object.class_name }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

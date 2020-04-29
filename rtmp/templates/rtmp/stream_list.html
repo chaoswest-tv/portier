@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load font_awesome %}
+{% block 'content' %}
+  <h6>Stream configurations</h6>
+  <hr class="my-4">
+  <div class="btn-toolbar mb-4" role="toolbar">
+    <div class="btn-group" role="group">
+      <a href="{% url 'rtmp:stream_create' %}" type="button" class="btn btn-sm btn-outline-success">{% fa 'plus' %} Create</a>
+    </div>
+  </div>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col" class="text-right">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for object in object_list %}
+      <tr>
+        <th scope="ro">{{ object.name }}</th>
+        <td align="right">
+          <div class="btn-group" role="group" aria-label="Basic example">
+          <a href="{% url 'rtmp:stream_detail' pk=object.pk %}" type="button" class="btn btn-sm btn-primary">Details</a>
+          <a href="{% url 'rtmp:stream_delete' pk=object.pk %}" type="button" class="btn btn-sm btn-danger">{% fa 'trash' %}</a>
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <script>
+    $(function () {
+      $('[data-toggle="popover"]').popover()
+    })
+  </script>
+{% endblock %}

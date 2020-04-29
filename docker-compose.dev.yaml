@@ -9,16 +9,20 @@ services:
       - postgres
       - redis
     environment:
-      DEBUG: 1
-      SECRET_KEY: "D4mn1t_Ch4nG3_M3!1!!"
-      SQL_ENGINE: django.db.backends.postgresql
-      SQL_USER: portier
-      SQL_PASSWORD: portier
-      SQL_DATABASE: portier
-      SQL_HOST: postgres
-      SQL_PORT: 5432
-      REDIS_HOST: redis
-      REDIS_PORT: 6379
+      - DEBUG=1
+      - "SECRET_KEY=D4mn1t_Ch4nG3_M3!1!!"
+      - SQL_ENGINE=django.db.backends.postgresql
+      - SQL_USER=portier
+      - SQL_PASSWORD=portier
+      - SQL_DATABASE=portier
+      - SQL_HOST=postgres
+      - SQL_PORT=5432
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - "EMAIL_FROM=${EMAIL_FROM}"
+      - "EMAIL_HOST=${EMAIL_HOST}"
+      - "EMAIL_HOST_USER=${EMAIL_HOST_USER}"
+      - "EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}"
   redis:
     image: redis:5-alpine
   postgres:
