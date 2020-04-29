@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load bootstrap4 %}
+{% load font_awesome %}
+{% block 'content' %}
+<h6>{% trans "restreamconfig_configuration_details_header" %}</h6>
+<hr class="my-4">
+<div class="row">
+  <div class="col-sm border-right">
+    <dl class="row">
+      <dt class="col-sm-3">{% trans "name" %}</dt>
+      <dd class="col-sm-9">{{ object.name }}</dd>
+      <dt class="col-sm-3">{% trans "stream" %}</dt>
+      <dd class="col-sm-9"><a href="{% url 'rtmp:stream_detail' pk=object.stream.pk %}">{{ object.stream.name }}</a></dd>
+    </dl>
+  </div>
+  <div class="col-sm">
+    <p>{% trans "configured_target_url" %}</p>
+    <div class="input-group mb-4" id="show_hide_target_url">
+      <input class="form-control" type="password" value="{{ object.target }}">
+      <div class="input-group-append">
+        <a href="" class="btn btn-outline-secondary"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(function () {
+    $('[data-toggle="popover"]').popover()
+  })
+  $(function() {
+    $("#show_hide_target_url a").on('click', function(event) {
+        event.preventDefault();
+        if ($('#show_hide_target_url input').attr('type') == 'text') {
+            $('#show_hide_target_url input').attr('type', 'password');
+            $('#show_hide_target_url i').addClass('fa-eye-slash');
+            $('#show_hide_target_url i').removeClass('fa-eye');
+        } else if ($('#show_hide_target_url input').attr('type') == 'password') {
+            $('#show_hide_target_url input').attr('type', 'text');
+            $('#show_hide_target_url i').removeClass('fa-eye-slash');
+            $('#show_hide_target_url i').addClass('fa-eye');
+        }
+    });
+  });
+</script>
+{% endblock %}

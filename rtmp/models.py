@@ -9,17 +9,21 @@ from . import signals
 class Application(models.Model):
     name = models.CharField(max_length=100, unique=True, help_text=_("rtmp_application_name"))
 
+    class Meta:
+        verbose_name = _('application_verbose_name')
+        verbose_name_plural = _('application_verbose_name_plural')
+
     def class_name(self):
-        return self.__class__.__name__
+        return _('aplication_class_name')
 
     def __str__(self):
         return self.name
 
 
 class Stream(models.Model):
-    application = models.ForeignKey(Application, on_delete=models.CASCADE)
-    stream = models.UUIDField(unique=True, default=uuid.uuid4)
-    name = models.CharField(max_length=100)
+    application = models.ForeignKey(Application, on_delete=models.CASCADE, help_text=_('stream_application_help'))
+    stream = models.UUIDField(unique=True, default=uuid.uuid4, help_text=_('stream_stream_help'))
+    name = models.CharField(max_length=100, help_text=_('stream_name_help'))
 
     # the same stream uuid can be published multiple times to different origin
     # servers. this is a valid scheme to achieve a failover on the origin layer.
@@ -58,7 +62,7 @@ class Stream(models.Model):
         return reverse('rtmp:stream_detail', kwargs={'pk': self.pk})
 
     def class_name(self):
-        return self.__class__.__name__
+        return _('stream_class_name')
 
     def __str__(self):
         return self.name

@@ -3,11 +3,11 @@
 {% load bootstrap4 %}
 {% load font_awesome %}
 {% block 'content' %}
-<h6>{% trans "stream_configuration_header" %}</h6>
+<h6>{% trans "restreamconfig_configuration_header" %}</h6>
 <hr class="my-4">
 <div class="btn-toolbar mb-4" role="toolbar">
   <div class="btn-group" role="group">
-    <a href="{% url 'rtmp:stream_create' %}" type="button" class="btn btn-sm btn-outline-success">{% fa 'plus' %} {% trans "create" %}</a>
+    <a href="{% url 'restream:restreamconfig_create' %}" type="button" class="btn btn-sm btn-outline-success">{% fa 'plus' %} {% trans "create" %}</a>
   </div>
 </div>
 <table class="table">
@@ -23,8 +23,8 @@
       <th scope="ro">{{ object.name }}</th>
       <td align="right">
         <div class="btn-group" role="group">
-        <a href="{% url 'rtmp:stream_detail' pk=object.pk %}" type="button" class="btn btn-sm btn-primary">{% trans "details" %}</a>
-        <a href="{% url 'rtmp:stream_delete' pk=object.pk %}" type="button" class="btn btn-sm btn-danger">{% fa 'trash' %}</a>
+        <a href="{% url 'restream:restreamconfig_detail' pk=object.pk %}" type="button" class="btn btn-sm btn-primary">{% trans "details" %}</a>
+        <a href="{% url 'restream:restreamconfig_delete' pk=object.pk %}" type="button" class="btn btn-sm btn-danger">{% fa 'trash' %}</a>
         </div>
       </td>
     </tr>

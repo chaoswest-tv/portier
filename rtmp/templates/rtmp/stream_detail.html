@@ -1,32 +1,34 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load bootstrap4 %}
 {% load font_awesome %}
 {% block 'content' %}
-  <h6>Show stream configuration details</h6>
-  <hr class="my-4">
+<h6>{% trans "stream_configuration_details_header" %}</h6>
+<hr class="my-4">
 <div class="row">
   <div class="col-sm border-right">
     <dl class="row">
-      <dt class="col-sm-3">Name</dt>
+      <dt class="col-sm-3">{% trans "name" %}</dt>
       <dd class="col-sm-9">{{ object.name }}</dd>
-      <dt class="col-sm-3">Application</dt>
+      <dt class="col-sm-3">{% trans "application" %}</dt>
       <dd class="col-sm-9">{{ object.application }}</dd>
     </dl>
-    <p><strong>Do not share the stream ID.</strong> It serves as a secret key, and anyone that knows this key could send content to your stream.</p>
+    <p>{% trans "stream_configuration_do_not_share_warning" %}</p>
   </div>
   <div class="col-sm">
-    <h6>How to configure your Encoder</h6>
+    <h6>{% trans "how_to_configure_your_encoder_header" %}</h6>
     <hr class="my-4">
-    <p>Set the following <strong>stream server</strong> in your encoder application:</p>
+    <p>{% trans "set_this_stream_server_in_encoder" %}</p>
     <code>rtmp://TODO TODO SERVER BASE URL/{{ object.application }}/</code>
-    <p>Set the following <strong>stream ID</strong> in your encoder application:</p>
+    <p>{% trans "set_this_stream_id_in_encoder" %}</p>
     <div class="input-group mb-4" id="show_hide_stream_key">
       <input class="form-control" type="password" value="{{ object.stream }}">
       <div class="input-group-append">
         <a href="" class="btn btn-outline-secondary"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
       </div>
     </div>
-    <p>You may need to use the full URL instead:</p>
+    <hr class="my-4">
+    <p>{% trans "you_may_need_to_use_this_full_url_instead" %}</p>
     <div class="input-group mb-4" id="show_hide_stream_url">
       <input class="form-control" type="password" value="rtmp://TODO TODO TODO SERVER BASE URL/{{ object.stream }}">
       <div class="input-group-append">

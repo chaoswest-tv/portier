@@ -21,6 +21,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
     path('rtmp/', include('rtmp.urls')),
+    path('restream/', include('restream.urls')),
     path('concierge/', include('concierge.urls')),
     path('', include('portal.urls')),
 ]
