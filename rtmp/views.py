@@ -13,6 +13,7 @@ from guardian.decorators import permission_required_or_403
 from guardian.shortcuts import assign_perm
 
 from . import models
+from . import forms
 
 logger = logging.getLogger(__name__)
 
@@ -70,8 +71,13 @@ class StreamDetail(DetailView):
                   name='dispatch')
 class StreamChange(UpdateView):
     model = models.Stream
-    fields = ['application', 'name']
+    form_class = forms.StreamFilteredApplicationForm
     template_name_suffix = '_update_form'
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
 
 @method_decorator(login_required, name='dispatch')
@@ -79,7 +85,12 @@ class StreamChange(UpdateView):
                   name='dispatch')
 class StreamCreate(CreateView):
     model = models.Stream
-    fields = ["name", "application"]
+    form_class = forms.StreamFilteredApplicationForm
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
     def form_valid(self, form):
         valid = super().form_valid(form)

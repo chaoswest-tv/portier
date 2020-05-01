@@ -28,6 +28,7 @@ ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", default="*").split(" ")
 
 
 DEFAULT_GROUP = 'default'
+DEFAULT_RTMP_APPPLICATION = 'live'
 
 # Application definition
 
