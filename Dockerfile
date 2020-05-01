@@ -24,4 +24,4 @@ ADD --chown=portier:portier . /app
 RUN ./manage.py collectstatic --noinput --link
 RUN ./manage.py compilemessages
 
-CMD ["/app/start.sh", "migrate_start"]
+CMD ["/app/start.sh"]

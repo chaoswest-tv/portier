@@ -23,7 +23,13 @@ migrate() {
   python manage.py migrate
 }
 
+initialize() {
+  python manage.py createdefaultgroup
+  python manage.py createdefaultapplication
+}
+
 wait_for_redis
 wait_for_database
 migrate
+initialize
 supervisord -n -c /etc/supervisord.conf
