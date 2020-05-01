@@ -21,16 +21,16 @@ RUN pip install -r requirements.txt
 ADD ./docker/nginx.conf /etc/nginx/nginx.conf
 ADD ./docker/supervisord.conf /etc/supervisord.conf
 
-# add user; add nginx to portier group for static file access
-RUN addgroup -S portier && adduser -S portier -G portier && adduser nginx portier
+# add user
+RUN addgroup -S portier && adduser -S portier -G portier
 
 # add code
 ADD --chown=portier:portier . /app
 
 # add static external libraries for frontend
-ADD --chown=portier:portier http://code.jquery.com/jquery-${JQUERY_VERSION}.min.js /app/static/js/jquery.min.js
-ADD --chown=portier:portier https://stackpath.bootstrapcdn.com/bootstrap/${BOOTSTRAP_VERSION}/js/bootstrap.bundle.min.js /app/static/js/bootstrap.bundle.min.js
-RUN mkdir -p /tmp/inter /app/static/fonts \
+RUN wget http://code.jquery.com/jquery-${JQUERY_VERSION}.min.js -O /app/static/js/jquery.min.js \
+    && wget https://stackpath.bootstrapcdn.com/bootstrap/${BOOTSTRAP_VERSION}/js/bootstrap.bundle.min.js -O /app/static/js/bootstrap.bundle.min.js \
+    && mkdir -p /tmp/inter /app/static/fonts \
     && cd /tmp/inter && wget https://github.com/rsms/inter/releases/download/v${INTER_VERSION}/Inter-${INTER_VERSION}.zip \
     && unzip Inter-${INTER_VERSION}.zip  && mv /tmp/inter/Inter\ Web/* /app/static/fonts/ \
     && cd - \
