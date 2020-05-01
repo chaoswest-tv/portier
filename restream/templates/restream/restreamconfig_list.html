@@ -16,6 +16,7 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col">{% trans "name" %}</th>
+      <th scope="col">{% trans "active" %}</th>
       <th scope="col" class="text-right">{% trans "actions" %}</th>
     </tr>
   </thead>
@@ -24,7 +25,14 @@
     {% get_obj_perms user for object as "obj_perms" %}
     {% if "view_restreamconfig" in obj_perms %}
     <tr>
-      <th scope="ro">{{ object.name }}</th>
+      <th scope="row">{{ object.name }}</th>
+      <td>
+        {% if object.active %}
+          <span class="text-success">{% fa 'check-circle' %}</span>
+        {% else %}
+          <span class="text-danger">{% fa 'times-circle' %}</span>
+        {% endif %}
+      </td>
       <td align="right">
         <div class="btn-group" role="group">
         <a href="{% url 'restream:restreamconfig_detail' pk=object.pk %}" type="button" class="btn btn-sm btn-primary">{% trans "details" %}</a>
