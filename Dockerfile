@@ -21,8 +21,8 @@ RUN pip install -r requirements.txt
 ADD ./docker/nginx.conf /etc/nginx/nginx.conf
 ADD ./docker/supervisord.conf /etc/supervisord.conf
 
-# add user
-RUN addgroup -S portier && adduser -S portier -G portier
+# add user; add nginx to portier group for static file access
+RUN addgroup -S portier && adduser -S portier -G portier && adduser nginx portier
 
 # add code
 ADD --chown=portier:portier . /app
