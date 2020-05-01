@@ -41,12 +41,10 @@
         {% endif %}
       </td>
       <td align="right">
-        <div class="btn-group" role="group">
         <a href="{% url 'restream:restreamconfig_detail' pk=object.pk %}" type="button" class="btn btn-sm btn-outline-primary">{% trans "details" %}</a>
         {% if "delete_restreamconfig" in obj_perms %}
         <a href="{% url 'restream:restreamconfig_delete' pk=object.pk %}" type="button" class="btn btn-sm btn-outline-danger">{% fa5_icon 'trash' %}</a>
         {% endif %}
-        </div>
       </td>
     </tr>
     {% endif %}

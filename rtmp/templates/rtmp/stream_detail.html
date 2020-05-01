@@ -30,28 +30,20 @@
       <dt class="col-sm-3">{% trans "application" %}</dt>
       <dd class="col-sm-9">{{ object.application }}</dd>
     </dl>
-    <p>{% trans "stream_configuration_do_not_share_warning" %}</p>
-  </div>
-  <div class="col-sm">
     <h6>{% trans "how_to_configure_your_encoder_header" %}</h6>
     <hr class="my-4">
     <p>{% trans "set_this_stream_server_in_encoder" %}</p>
-    <code>rtmp://TODO TODO SERVER BASE URL/{{ object.application }}/</code>
+    <p class="mb-4"><code>rtmp://TODO TODO SERVER BASE URL/{{ object.application }}/</code></p>
     <p>{% trans "set_this_stream_id_in_encoder" %}</p>
     <div class="input-group mb-4" id="show_hide_stream_key">
-      <input class="form-control" type="password" value="{{ object.stream }}">
+      <input readonly class="form-control" type="password" value="{{ object.stream }}">
       <div class="input-group-append">
         <a href="" class="btn btn-outline-secondary"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
       </div>
     </div>
-    <hr class="my-4">
-    <p>{% trans "you_may_need_to_use_this_full_url_instead" %}</p>
-    <div class="input-group mb-4" id="show_hide_stream_url">
-      <input class="form-control" type="password" value="rtmp://TODO TODO TODO SERVER BASE URL/{{ object.stream }}">
-      <div class="input-group-append">
-        <a href="" class="btn btn-outline-secondary"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
-      </div>
-    </div>
+  </div>
+  <div class="col-sm">
+    {% trans "stream_configuration_text_html" %}
   </div>
 </div>
 <script>
@@ -69,20 +61,6 @@
             $('#show_hide_stream_key input').attr('type', 'text');
             $('#show_hide_stream_key i').removeClass('fa-eye-slash');
             $('#show_hide_stream_key i').addClass('fa-eye');
-        }
-    });
-  });
-  $(function() {
-    $("#show_hide_stream_url a").on('click', function(event) {
-        event.preventDefault();
-        if ($('#show_hide_stream_url input').attr('type') == 'text') {
-            $('#show_hide_stream_url input').attr('type', 'password');
-            $('#show_hide_stream_url i').addClass('fa-eye-slash');
-            $('#show_hide_stream_url i').removeClass('fa-eye');
-        } else if ($('#show_hide_stream_url input').attr('type') == 'password') {
-            $('#show_hide_stream_url input').attr('type', 'text');
-            $('#show_hide_stream_url i').removeClass('fa-eye-slash');
-            $('#show_hide_stream_url i').addClass('fa-eye');
         }
     });
   });

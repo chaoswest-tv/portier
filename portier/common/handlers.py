@@ -2,7 +2,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.db.models import Q
 from guardian.models import UserObjectPermission
 from guardian.models import GroupObjectPermission
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import Group
 from django.conf import settings
 
 

@@ -1,17 +1,16 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) Chaoswest TV
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Jan Koppe <post@jankoppe.de>, 2020.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: portier 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-01 17:01+0000\n"
+"POT-Creation-Date: 2020-05-01 22:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: Jan Koppe <post@jankoppe.de>\n"
+"Language-Team: english <post@chaoswest.tv>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,19 +27,19 @@ msgstr "English"
 
 #: restream/models.py:11
 msgid "restreamconfig_stream_help"
-msgstr ""
+msgstr "Stream that's being used as source for the restreaming"
 
 #: restream/models.py:12
 msgid "restreamconfig_target_help"
-msgstr ""
+msgstr "RTMP target url that the stream is being restreamed to"
 
 #: restream/models.py:13
 msgid "restreamconfig_name_help"
-msgstr ""
+msgstr "Name for this restream configuration"
 
 #: restream/models.py:14
 msgid "restreamconfig_activate_help"
-msgstr ""
+msgstr "Only active configurations will be executed for incoming streams"
 
 #: restream/models.py:17
 msgid "restreamconfig_verbose_name"
@@ -81,9 +80,9 @@ msgid "change"
 msgstr "Change"
 
 #: restream/templates/restream/restreamconfig_detail.html:28
-#: restream/templates/restream/restreamconfig_list.html:18
+#: restream/templates/restream/restreamconfig_list.html:25
 #: rtmp/templates/rtmp/stream_detail.html:28
-#: rtmp/templates/rtmp/stream_list.html:18
+#: rtmp/templates/rtmp/stream_list.html:24
 msgid "name"
 msgstr "Name"
 
@@ -91,7 +90,12 @@ msgstr "Name"
 msgid "stream"
 msgstr "Stream"
 
-#: restream/templates/restream/restreamconfig_detail.html:35
+#: restream/templates/restream/restreamconfig_detail.html:32
+#: restream/templates/restream/restreamconfig_list.html:26
+msgid "active"
+msgstr "Active"
+
+#: restream/templates/restream/restreamconfig_detail.html:43
 msgid "configured_target_url"
 msgstr "Configured target URL"
 
@@ -103,45 +107,47 @@ msgstr "Create new restream configuration"
 #: restream/templates/restream/restreamconfig_update_form.html:14
 #: rtmp/templates/rtmp/stream_form.html:14
 #: rtmp/templates/rtmp/stream_update_form.html:14
-#: templates/registration/password_change_form.html:13
-#: templates/registration/password_reset_form.html:13
+#: templates/registration/password_change_form.html:14
+#: templates/registration/password_reset_form.html:14
 msgid "submit"
 msgstr "Submit"
 
 #: restream/templates/restream/restreamconfig_form.html:21
-msgid "create_new_restreamconfig_configuration_text_html"
+#: restream/templates/restream/restreamconfig_update_form.html:21
+msgid "restreamconfig_configuration_text_html"
 msgstr ""
+"<p>A restream configuration allows you to forward incoming streamswithout "
+"further processing to external systems.<p><p>The restream configuration "
+"needs a previously configured source stream and a target RTMP URL which you "
+"can freely chose. The target RTMP URL should look e.g. like this: "
+"<code>rtmp://servername/app/streamkey</code></p>You can of course create "
+"multiple restream configurations with the same source stream. This allows "
+"you to only send one stream from your encoder, but distribute this to "
+"multiple platforms.</p><p>Only restream configurations that are marked "
+"active will be executed for an incoming stream!</p>"
 
-#: restream/templates/restream/restreamconfig_list.html:8
+#: restream/templates/restream/restreamconfig_list.html:11
 msgid "restreamconfig_configuration_header"
 msgstr "Restream configuration"
 
-#: restream/templates/restream/restreamconfig_list.html:12
-#: rtmp/templates/rtmp/stream_list.html:12
+#: restream/templates/restream/restreamconfig_list.html:16
+#: rtmp/templates/rtmp/stream_list.html:15
 msgid "create"
 msgstr "Create"
 
-#: restream/templates/restream/restreamconfig_list.html:19
-msgid "active"
-msgstr "Active"
-
-#: restream/templates/restream/restreamconfig_list.html:20
-#: rtmp/templates/rtmp/stream_list.html:20
+#: restream/templates/restream/restreamconfig_list.html:27
+#: rtmp/templates/rtmp/stream_list.html:26
 msgid "actions"
 msgstr "Actions"
 
-#: restream/templates/restream/restreamconfig_list.html:38
-#: rtmp/templates/rtmp/stream_list.html:38
+#: restream/templates/restream/restreamconfig_list.html:44
+#: rtmp/templates/rtmp/stream_list.html:43
 msgid "details"
 msgstr "Details"
 
 #: restream/templates/restream/restreamconfig_update_form.html:5
 msgid "update_restreamconfig_configuration_header"
 msgstr "Update restream configuration"
-
-#: restream/templates/restream/restreamconfig_update_form.html:21
-msgid "update_restreamconfig_configuration_text_html"
-msgstr ""
 
 #: rtmp/models.py:13
 msgid "rtmp_application_name"
@@ -199,38 +205,38 @@ msgid "application"
 msgstr "Application"
 
 #: rtmp/templates/rtmp/stream_detail.html:33
-msgid "stream_configuration_do_not_share_warning"
-msgstr "Attention! Do not share this stream ID with anyone."
-
-#: rtmp/templates/rtmp/stream_detail.html:36
 msgid "how_to_configure_your_encoder_header"
 msgstr "How to configure your encoder"
 
-#: rtmp/templates/rtmp/stream_detail.html:38
+#: rtmp/templates/rtmp/stream_detail.html:35
 msgid "set_this_stream_server_in_encoder"
 msgstr "Set this stream server in your encoder"
 
-#: rtmp/templates/rtmp/stream_detail.html:40
+#: rtmp/templates/rtmp/stream_detail.html:37
 msgid "set_this_stream_id_in_encoder"
 msgstr "Set this stream ID in your encoder"
 
-#: rtmp/templates/rtmp/stream_detail.html:48
-msgid "you_may_need_to_use_this_full_url_instead"
-msgstr "You may need to use this full URL instead"
+#: rtmp/templates/rtmp/stream_detail.html:46
+#: rtmp/templates/rtmp/stream_form.html:21
+#: rtmp/templates/rtmp/stream_update_form.html:21
+msgid "stream_configuration_text_html"
+msgstr ""
+"<p>A stream configuration allows you to send a stream into the system.</"
+"p><p>Only streams that can be matched to a previously configured stream will "
+"be accepted by the system.</p><p>The only purpose of the name is to make "
+"this stream easily identifiable when creating further configurations.The "
+"actual stream ID will be shown to you after creation. <strong>Always keep "
+"your stream ID secret.</strong></p>"
 
 #: rtmp/templates/rtmp/stream_form.html:5
 msgid "create_new_stream_configuration_header"
 msgstr "Create new stream configuration"
 
-#: rtmp/templates/rtmp/stream_form.html:21
-msgid "create_new_stream_configuration_text_html"
-msgstr ""
-
-#: rtmp/templates/rtmp/stream_list.html:8
+#: rtmp/templates/rtmp/stream_list.html:10
 msgid "stream_configuration_header"
 msgstr "Stream configuration"
 
-#: rtmp/templates/rtmp/stream_list.html:19
+#: rtmp/templates/rtmp/stream_list.html:25
 msgid "receiving"
 msgstr "Receiving"
 
@@ -238,44 +244,40 @@ msgstr "Receiving"
 msgid "update_stream_configuration_header"
 msgstr "Change stream configuration"
 
-#: rtmp/templates/rtmp/stream_update_form.html:21
-msgid "update_stream_configuration_text_html"
-msgstr ""
-
-#: templates/base.html:36
+#: templates/base.html:40
 msgid "navbar_streaming"
 msgstr "Streaming"
 
-#: templates/base.html:39
+#: templates/base.html:43
 msgid "navbar_configuration_streams"
 msgstr "Streams"
 
-#: templates/base.html:40
+#: templates/base.html:44
 msgid "navbar_configuration_restreams"
 msgstr "Restreams"
 
-#: templates/base.html:47
+#: templates/base.html:51
 #, python-format
 msgid "hello_%(username)s"
 msgstr "Hello, %(username)s!"
 
-#: templates/base.html:50
+#: templates/base.html:54
 msgid "navbar_account_password_change"
 msgstr "Change password"
 
-#: templates/base.html:51
+#: templates/base.html:55
 msgid "navbar_account_logout"
 msgstr "Logout"
 
-#: templates/base.html:55
+#: templates/base.html:59
 msgid "navbar_login"
 msgstr "Login"
 
-#: templates/registration/login.html:5 templates/registration/login.html:13
+#: templates/registration/login.html:5 templates/registration/login.html:14
 msgid "login"
 msgstr "Login"
 
-#: templates/registration/login.html:18
+#: templates/registration/login.html:19
 msgid "forgot_password_q"
 msgstr "Did you forget your password?"
 
@@ -283,22 +285,23 @@ msgstr "Did you forget your password?"
 msgid "password_change_successful"
 msgstr "Password change was successful"
 
-#: templates/registration/password_change_done.html:6
+#: templates/registration/password_change_done.html:7
 msgid "password_change_successful_text"
 msgstr ""
-
-#: templates/registration/password_change_done.html:7
-msgid "take_me_to_safety"
-msgstr "Help! Take me back to safety!"
+"The password has succesfully been changed. From now on you can login with "
+"your new password."
 
 #: templates/registration/password_change_form.html:5
 msgid "change_password"
 msgstr "Change password"
 
-#: templates/registration/password_change_form.html:20
-msgid "change_password_text_html"
-msgstr ""
+#: templates/registration/password_reset_form.html:5
+msgid "reset_password"
+msgstr "Password forgotten?"
 
-#: templates/registration/password_reset_form.html:20
+#: templates/registration/password_reset_form.html:21
 msgid "reset_password_text_html"
 msgstr ""
+"Did you forget your password? No worries. Enter the e-mail address of your "
+"user account here. We will send an e-mail with a link to you, which you can "
+"use to reset the password."

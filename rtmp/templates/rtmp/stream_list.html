@@ -40,12 +40,10 @@
         {% endif %}
       </td>
       <td align="right">
-        <div class="btn-group" role="group">
         <a href="{% url 'rtmp:stream_detail' pk=object.pk %}" type="button" class="btn btn-sm btn-outline-primary ">{% trans "details" %}</a>
         {% if "delete_stream" in obj_perms %}
         <a href="{% url 'rtmp:stream_delete' pk=object.pk %}" type="button" class="btn btn-sm btn-outline-danger">{% fa5_icon 'trash' %}</a>
         {% endif %}
-        </div>
       </td>
     </tr>
     {% endif %}
