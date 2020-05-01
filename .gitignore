@@ -1,4 +1,8 @@
 .env
+static/css/font-awesome.min.css
+static/js/bootstrap.bundle.min.js
+static/js/jquery.min.js
+static/fonts
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

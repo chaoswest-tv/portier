@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-01 12:17+0000\n"
+"POT-Creation-Date: 2020-05-01 17:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: portier/settings.py:139
+msgid "German"
+msgstr "Deutsch"
+
+#: portier/settings.py:140
+msgid "English"
+msgstr "Englisch"
 
 #: restream/models.py:11
 msgid "restreamconfig_stream_help"
@@ -49,19 +57,20 @@ msgstr ""
 #: restream/templates/restream/restreamconfig_confirm_delete.html:6
 #: rtmp/templates/rtmp/stream_confirm_delete.html:6
 msgid "confirm_delete_header"
-msgstr ""
+msgstr "Löschen bestätigen"
 
 #: restream/templates/restream/restreamconfig_confirm_delete.html:12
 #, python-format
 msgid "are_you_sure_you_want_to_delete_\"%(restreamconfig_config_name)s\"?"
 msgstr ""
+"Bist du sicher, dass du \"%(restreamconfig_config_name)s\" löschen willst?"
 
 #: restream/templates/restream/restreamconfig_confirm_delete.html:15
 #: restream/templates/restream/restreamconfig_detail.html:20
 #: rtmp/templates/rtmp/stream_confirm_delete.html:18
 #: rtmp/templates/rtmp/stream_detail.html:20
 msgid "delete"
-msgstr ""
+msgstr "Löschen"
 
 #: restream/templates/restream/restreamconfig_detail.html:12
 msgid "restreamconfig_configuration_details_header"
@@ -70,26 +79,26 @@ msgstr ""
 #: restream/templates/restream/restreamconfig_detail.html:17
 #: rtmp/templates/rtmp/stream_detail.html:17
 msgid "change"
-msgstr ""
+msgstr "Ändern"
 
 #: restream/templates/restream/restreamconfig_detail.html:28
 #: restream/templates/restream/restreamconfig_list.html:18
 #: rtmp/templates/rtmp/stream_detail.html:28
 #: rtmp/templates/rtmp/stream_list.html:18
 msgid "name"
-msgstr ""
+msgstr "Name"
 
 #: restream/templates/restream/restreamconfig_detail.html:30
 msgid "stream"
-msgstr ""
+msgstr "Stream"
 
 #: restream/templates/restream/restreamconfig_detail.html:35
 msgid "configured_target_url"
-msgstr ""
+msgstr "Konfigurierte Ziel-URL"
 
 #: restream/templates/restream/restreamconfig_form.html:5
 msgid "create_new_restreamconfig_configuration_header"
-msgstr ""
+msgstr "Neue Restream Konfiguration erstellen"
 
 #: restream/templates/restream/restreamconfig_form.html:14
 #: restream/templates/restream/restreamconfig_update_form.html:14
@@ -98,7 +107,7 @@ msgstr ""
 #: templates/registration/password_change_form.html:13
 #: templates/registration/password_reset_form.html:13
 msgid "submit"
-msgstr ""
+msgstr "Abschicken"
 
 #: restream/templates/restream/restreamconfig_form.html:21
 msgid "create_new_restreamconfig_configuration_text_html"
@@ -106,30 +115,30 @@ msgstr ""
 
 #: restream/templates/restream/restreamconfig_list.html:8
 msgid "restreamconfig_configuration_header"
-msgstr ""
+msgstr "Restream Konfiguration"
 
 #: restream/templates/restream/restreamconfig_list.html:12
 #: rtmp/templates/rtmp/stream_list.html:12
 msgid "create"
-msgstr ""
+msgstr "Erstellen"
 
 #: restream/templates/restream/restreamconfig_list.html:19
 msgid "active"
-msgstr ""
+msgstr "Aktiv"
 
 #: restream/templates/restream/restreamconfig_list.html:20
 #: rtmp/templates/rtmp/stream_list.html:20
 msgid "actions"
-msgstr ""
+msgstr "Aktionen"
 
 #: restream/templates/restream/restreamconfig_list.html:38
 #: rtmp/templates/rtmp/stream_list.html:38
 msgid "details"
-msgstr ""
+msgstr "Details"
 
 #: restream/templates/restream/restreamconfig_update_form.html:5
 msgid "update_restreamconfig_configuration_header"
-msgstr ""
+msgstr "Restream Konfiguration anpassen"
 
 #: restream/templates/restream/restreamconfig_update_form.html:21
 msgid "update_restreamconfig_configuration_text_html"
@@ -137,80 +146,82 @@ msgstr ""
 
 #: rtmp/models.py:13
 msgid "rtmp_application_name"
-msgstr ""
+msgstr "RTMP Application Name"
 
 #: rtmp/models.py:16
 msgid "application_verbose_name"
-msgstr ""
+msgstr "Application"
 
 #: rtmp/models.py:17
 msgid "application_verbose_name_plural"
-msgstr ""
+msgstr "Applications"
 
 #: rtmp/models.py:20
 msgid "aplication_class_name"
-msgstr ""
+msgstr "Application"
 
 #: rtmp/models.py:27
 msgid "stream_application_help"
-msgstr ""
+msgstr "Unter welcher RTMP Application gilt diese Stream ID"
 
 #: rtmp/models.py:28
 msgid "stream_stream_help"
-msgstr ""
+msgstr "RTMP Stream ID"
 
 #: rtmp/models.py:29
 msgid "stream_name_help"
-msgstr ""
+msgstr "Name für diesen Stream"
 
 #: rtmp/models.py:68
 msgid "stream_class_name"
-msgstr ""
+msgstr "Stream"
 
 #: rtmp/templates/rtmp/stream_confirm_delete.html:13
 msgid "deleting_stream_configuration_will_also_delete_all_depending_confgurations_warning"
 msgstr ""
+"Achtung! Beim Löschen dieser Stream Konfiguration werden auch alle "
+"abhängigen Konfigurationen gelöscht."
 
 #: rtmp/templates/rtmp/stream_confirm_delete.html:15
 #, python-format
 msgid "are_you_sure_you_want_to_delete_\"%(stream_config_name)s\"?"
-msgstr ""
+msgstr "Willst du wirklich \"%(stream_config_name)s\" löschen?"
 
 #: rtmp/templates/rtmp/stream_confirm_delete.html:25
 msgid "deleting_configurations_list_header"
-msgstr ""
+msgstr "Diese Konfigurationen werden gelöscht"
 
 #: rtmp/templates/rtmp/stream_detail.html:12
 msgid "stream_configuration_details_header"
-msgstr ""
+msgstr "Stream Konfiguration Details"
 
 #: rtmp/templates/rtmp/stream_detail.html:30
 msgid "application"
-msgstr ""
+msgstr "Application"
 
 #: rtmp/templates/rtmp/stream_detail.html:33
 msgid "stream_configuration_do_not_share_warning"
-msgstr ""
+msgstr "Achtung! Gebe diese Stream ID niemals weiter."
 
 #: rtmp/templates/rtmp/stream_detail.html:36
 msgid "how_to_configure_your_encoder_header"
-msgstr ""
+msgstr "Wie du deinen Encoder konfigurierst"
 
 #: rtmp/templates/rtmp/stream_detail.html:38
 msgid "set_this_stream_server_in_encoder"
-msgstr ""
+msgstr "Stelle diesen Stream Server in deinem Encoder ein"
 
 #: rtmp/templates/rtmp/stream_detail.html:40
 msgid "set_this_stream_id_in_encoder"
-msgstr ""
+msgstr "Stelle diese Stream ID in deinem Encoder ein"
 
 #: rtmp/templates/rtmp/stream_detail.html:48
 msgid "you_may_need_to_use_this_full_url_instead"
-msgstr ""
+msgstr "Vielleicht musst du diese volle URL verwenden"
 
 #: rtmp/templates/rtmp/stream_form.html:5
 msgid "create_new_stream_configuration_header"
-msgstr ""
+msgstr "Neue Stream Konfiguration erstellen"
 
 #: rtmp/templates/rtmp/stream_form.html:21
 msgid "create_new_stream_configuration_text_html"
@@ -218,63 +229,60 @@ msgstr ""
 
 #: rtmp/templates/rtmp/stream_list.html:8
 msgid "stream_configuration_header"
-msgstr ""
+msgstr "Stream Konfiguration"
 
 #: rtmp/templates/rtmp/stream_list.html:19
-msgid "publishing"
-msgstr ""
+msgid "receiving"
+msgstr "Empfängt"
 
 #: rtmp/templates/rtmp/stream_update_form.html:5
 msgid "update_stream_configuration_header"
-msgstr ""
+msgstr "Stream Konfiguration anpassen"
 
 #: rtmp/templates/rtmp/stream_update_form.html:21
 msgid "update_stream_configuration_text_html"
 msgstr ""
 
 #: templates/base.html:36
-msgid "navbar_configuration"
-msgstr ""
+msgid "navbar_streaming"
+msgstr "Streaming"
 
 #: templates/base.html:39
-msgid "navbar_configuration_streaming_header"
-msgstr ""
+msgid "navbar_configuration_streams"
+msgstr "Streams"
 
 #: templates/base.html:40
-msgid "navbar_configuration_streams"
-msgstr ""
-
-#: templates/base.html:41
 msgid "navbar_configuration_restreams"
-msgstr ""
+msgstr "Restreams"
 
-#: templates/base.html:43
-msgid "navbar_configuration_account_header"
-msgstr ""
-
-#: templates/base.html:44
-msgid "navbar_configuration_password_change"
-msgstr ""
+#: templates/base.html:47
+#, python-format
+msgid "hello_%(username)s"
+msgstr "Hallo, %(username)s!"
 
 #: templates/base.html:50
-msgid "navbar_logout"
-msgstr ""
+msgid "navbar_account_password_change"
+msgstr "Passwort ändern"
 
-#: templates/base.html:52
+#: templates/base.html:51
+msgid "navbar_account_logout"
+msgstr "Abmelden"
+
+#: templates/base.html:55
 msgid "navbar_login"
-msgstr ""
+msgstr "Anmelden"
 
 #: templates/registration/login.html:5 templates/registration/login.html:13
 msgid "login"
-msgstr ""
+msgstr "Anmelden"
 
 #: templates/registration/login.html:18
 msgid "forgot_password_q"
-msgstr ""
+msgstr "Passwort vergessen?"
 
 #: templates/registration/password_change_done.html:5
 msgid "password_change_successful"
-msgstr ""
+msgstr "Passwort erfolgreich geändert"
 
 #: templates/registration/password_change_done.html:6
 msgid "password_change_successful_text"
@@ -282,11 +290,11 @@ msgstr ""
 
 #: templates/registration/password_change_done.html:7
 msgid "take_me_to_safety"
-msgstr ""
+msgstr "Bring mich in Sicherheit!"
 
 #: templates/registration/password_change_form.html:5
 msgid "change_password"
-msgstr ""
+msgstr "Passwort ändern"
 
 #: templates/registration/password_change_form.html:20
 msgid "change_password_text_html"

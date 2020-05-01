@@ -1,7 +1,7 @@
 {% load static %}
 {% load i18n %}
 {% load bootstrap4 %}
-{% load font_awesome %}
+{% load fontawesome_5 %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,9 +11,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>{% block 'title' %}portier{% endblock %}</title>
-    {% bootstrap_css %}
-    {% fa_css %}
-    {% bootstrap_javascript jquery='full' %}
+    <link rel="stylesheet" href="{% static 'fonts/inter.css' %}"></link>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"></link>
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}"></link>
+    {% fontawesome_5_static %}
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
   </head>
 
   <body>
@@ -32,25 +35,46 @@
           <ul class="navbar-nav">
           {% if user.is_authenticated %}
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {% trans "navbar_configuration" %}
+              <a class="nav-link dropdown-toggle" href="#" id="navbarStreamingDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {% trans "navbar_streaming" %}
               </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <h6 class="dropdown-header">{% trans "navbar_configuration_streaming_header" %}</h6>
-                <a class="dropdown-item" href="{% url 'rtmp:stream_list' %}">{% trans "navbar_configuration_streams" %}</a>
-                <a class="dropdown-item" href="{% url 'restream:restreamconfig_list' %}">{% trans "navbar_configuration_restreams" %}</a>
-                <div class="dropdown-divider"></div>
-                <h6 class="dropdown-header">{% trans "navbar_configuration_account_header" %}</h6>
-                <a class="dropdown-item" href="{% url 'password_change' %}">{% trans "navbar_configuration_password_change" %}</a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarStreamingDropdown">
+                <a class="dropdown-item{% if not perms.rtmp.add_stream %} disabled{% endif %}" href="{% url 'rtmp:stream_list' %}">{% trans "navbar_configuration_streams" %}</a>
+                <a class="dropdown-item{% if not perms.restream.add_restreamconfig %} disabled{% endif %}" href="{% url 'restream:restreamconfig_list' %}">{% trans "navbar_configuration_restreams" %}</a>
               </div>
             </li>
           {% endif %}
-            <li class="nav-item">
           {% if user.is_authenticated %}
-              <a class="nav-link logout" href="{% url 'logout' %}?next={% url 'index' %}">{% trans "navbar_logout" %}</a>
+            <li class="nav-item dropdown border-left">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarAccountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {% blocktrans with username=user.get_username %}hello_{{ username }}{% endblocktrans %}
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarAccountDropdown">
+                <a class="dropdown-item" href="{% url 'password_change' %}">{% trans "navbar_account_password_change" %}</a>
+                <a class="dropdown-item" href="{% url 'logout' %}?next={% url 'index' %}">{% trans "navbar_account_logout" %}</a>
+            </li>
           {% else %}
+            <li class="nav-item">
               <a class="nav-link login" href="{% url 'login' %}?next={% url 'index' %}">{% trans "navbar_login" %}</a>
+            </li>
           {% endif %}
+            <li class="nav-item dropdown border-left">
+              <a class="nav-link dropdown-toggle" id="languageSelectDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {% fa5_icon 'language' %}
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="languageSelectDropdown">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% for language in languages %}
+                <a class="dropdown-item{% if language.code == LANGUAGE_CODE %} font-weight-bold{% endif %}" onclick="$('#languageSelectInput').val('{{ language.code }}'); $('#languageSelectForm').submit()">{{ language.name_local}} ({{ language.code }})</a>
+                {% endfor %}
+              </div>
+              <form action="{% url 'set_language' %}" method="post" id="languageSelectForm">
+                {% csrf_token %}
+                <input name="next" type="hidden" value="{{ redirect_to }}">
+                <input name="language" type="hidden" value="" id="languageSelectInput">
+              </form>
             </li>
           </ul>
         </div>
@@ -62,6 +86,7 @@
     </main>
     <footer class="text-muted">
       <div class="container">
+
       </div>
     </footer>
   </body>

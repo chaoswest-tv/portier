@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% load bootstrap4 %}
-{% load font_awesome %}
+{% load fontawesome_5 %}
 {% block 'content' %}
 <h6>{% trans "confirm_delete_header" %}</h6>
 <hr class="my-4">
@@ -12,7 +12,7 @@
       <p>{% blocktrans with restreamconfig_config_name=object.name %}are_you_sure_you_want_to_delete_"{{ restreamconfig_config_name }}"?{% endblocktrans %}</p>
       {% buttons %}
         <button type="submit" class="btn btn-danger" value="login">
-          {% fa 'trash' %} {% trans "delete" %}
+          {% fa5_icon 'trash' %} {% trans "delete" %}
         </button>
       {% endbuttons %}
       <input type="hidden" name="next" value="{{ next }}">

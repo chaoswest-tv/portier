@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% load bootstrap4 %}
-{% load font_awesome %}
+{% load fontawesome_5 %}
 {% load guardian_tags %}
 
 {% get_obj_perms user for object as "obj_perms" %}
@@ -13,12 +13,12 @@
   </div>
   {% get_obj_perms user for object as "obj_perms" %}
   <div class="col-auto">
-  {% if "change_stream" in obj_perms %}
-  <a href="{% url 'rtmp:stream_change' pk=object.pk %}" type="button" class="btn btn-primary">{% fa 'pencil' %} {% trans 'change' %}</a>
-  {% endif %}
-  {% if "delete_stream" in obj_perms %}
-  <a href="{% url 'rtmp:stream_delete' pk=object.pk %}" type="button" class="btn btn-danger">{% fa 'trash' %} {% trans 'delete' %}</a>
-  {% endif %}
+    {% if "change_stream" in obj_perms %}
+    <a href="{% url 'rtmp:stream_change' pk=object.pk %}" type="button" class="btn btn-sm btn-outline-primary">{% fa5_icon 'edit' %} {% trans 'change' %}</a>
+    {% endif %}
+    {% if "delete_stream" in obj_perms %}
+    <a href="{% url 'rtmp:stream_delete' pk=object.pk %}" type="button" class="btn btn-sm btn-outline-danger">{% fa5_icon 'trash' %} {% trans 'delete' %}</a>
+    {% endif %}
   </div>
 </div>
 <hr class="my-4">

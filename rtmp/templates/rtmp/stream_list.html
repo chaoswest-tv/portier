@@ -1,22 +1,28 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% load bootstrap4 %}
-{% load font_awesome %}
+{% load fontawesome_5 %}
 {% load guardian_tags %}
 
 {% block 'content' %}
-<h6>{% trans "stream_configuration_header" %}</h6>
-<hr class="my-4">
-<div class="btn-toolbar mb-4" role="toolbar">
-  <div class="btn-group" role="group">
-    <a href="{% url 'rtmp:stream_create' %}" type="button" class="btn btn-sm btn-outline-success">{% fa 'plus' %} {% trans "create" %}</a>
+<div class="row justify-content-between">
+  <div class="col">
+    <h6>{% trans "stream_configuration_header" %}</h6>
+  </div>
+  <div class="col-auto">
+    <div class="btn-toolbar" role="toolbar">
+      <div class="btn-group" role="group">
+        <a href="{% url 'rtmp:stream_create' %}" type="button" class="btn btn-sm btn-outline-primary">{% fa5_icon 'plus' %} {% trans "create" %}</a>
+      </div>
+    </div>
   </div>
 </div>
+<hr class="my-4">
 <table class="table">
-  <thead class="thead-dark">
+  <thead class="thead-light">
     <tr>
       <th scope="col">{% trans "name" %}</th>
-      <th scope="col">{% trans "publishing" %}</th>
+      <th scope="col">{% trans "receiving" %}</th>
       <th scope="col" class="text-right">{% trans "actions" %}</th>
     </tr>
   </thead>
@@ -28,16 +34,16 @@
       <th scope="ro">{{ object.name }}</th>
       <td>
         {% if object.publish_counter > 0 %}
-          <span class="text-success">{% fa 'check-circle' %}</span>
+          <span class="text-success">{% fa5_icon 'check-circle' %}</span>
         {% else %}
-          <span class="text-danger">{% fa 'times-circle' %}</span>
+          <span class="text-danger">{% fa5_icon 'times-circle' %}</span>
         {% endif %}
       </td>
       <td align="right">
         <div class="btn-group" role="group">
-        <a href="{% url 'rtmp:stream_detail' pk=object.pk %}" type="button" class="btn btn-sm btn-primary">{% trans "details" %}</a>
+        <a href="{% url 'rtmp:stream_detail' pk=object.pk %}" type="button" class="btn btn-sm btn-outline-primary ">{% trans "details" %}</a>
         {% if "delete_stream" in obj_perms %}
-        <a href="{% url 'rtmp:stream_delete' pk=object.pk %}" type="button" class="btn btn-sm btn-danger">{% fa 'trash' %}</a>
+        <a href="{% url 'rtmp:stream_delete' pk=object.pk %}" type="button" class="btn btn-sm btn-outline-danger">{% fa5_icon 'trash' %}</a>
         {% endif %}
         </div>
       </td>
