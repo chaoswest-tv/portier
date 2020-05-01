@@ -27,6 +27,8 @@ DEBUG = int(os.environ.get("DEBUG", default=0))
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", default="*").split(" ")
 
 
+DEFAULT_GROUP = 'default'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,6 +42,7 @@ INSTALLED_APPS = [
     'django_registration',
     'bootstrap4',
     'fa',
+    'core.apps.CoreConfig',
     'portal.apps.PortalConfig',
     'rtmp.apps.RtmpConfig',
     'concierge.apps.ConciergeConfig',
