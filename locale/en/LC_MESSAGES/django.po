@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-29 19:05+0000\n"
+"POT-Creation-Date: 2020-05-01 12:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,31 +18,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: restream/models.py:9
+#: restream/models.py:11
 msgid "restreamconfig_stream_help"
 msgstr ""
 
-#: restream/models.py:10
+#: restream/models.py:12
 msgid "restreamconfig_target_help"
 msgstr ""
 
-#: restream/models.py:11
+#: restream/models.py:13
 msgid "restreamconfig_name_help"
 msgstr ""
 
-#: restream/models.py:12
+#: restream/models.py:14
 msgid "restreamconfig_activate_help"
 msgstr ""
 
-#: restream/models.py:15
+#: restream/models.py:17
 msgid "restreamconfig_verbose_name"
 msgstr ""
 
-#: restream/models.py:16
+#: restream/models.py:18
 msgid "restreamconfig_verbose_name_plural"
 msgstr ""
 
-#: restream/models.py:19
+#: restream/models.py:21
 msgid "restreamconfig_class_name"
 msgstr ""
 
@@ -57,26 +57,33 @@ msgid "are_you_sure_you_want_to_delete_\"%(restreamconfig_config_name)s\"?"
 msgstr ""
 
 #: restream/templates/restream/restreamconfig_confirm_delete.html:15
+#: restream/templates/restream/restreamconfig_detail.html:20
 #: rtmp/templates/rtmp/stream_confirm_delete.html:18
+#: rtmp/templates/rtmp/stream_detail.html:20
 msgid "delete"
 msgstr ""
 
-#: restream/templates/restream/restreamconfig_detail.html:6
+#: restream/templates/restream/restreamconfig_detail.html:12
 msgid "restreamconfig_configuration_details_header"
 msgstr ""
 
-#: restream/templates/restream/restreamconfig_detail.html:11
-#: restream/templates/restream/restreamconfig_list.html:16
-#: rtmp/templates/rtmp/stream_detail.html:11
-#: rtmp/templates/rtmp/stream_list.html:16
+#: restream/templates/restream/restreamconfig_detail.html:17
+#: rtmp/templates/rtmp/stream_detail.html:17
+msgid "change"
+msgstr ""
+
+#: restream/templates/restream/restreamconfig_detail.html:28
+#: restream/templates/restream/restreamconfig_list.html:18
+#: rtmp/templates/rtmp/stream_detail.html:28
+#: rtmp/templates/rtmp/stream_list.html:18
 msgid "name"
 msgstr ""
 
-#: restream/templates/restream/restreamconfig_detail.html:13
+#: restream/templates/restream/restreamconfig_detail.html:30
 msgid "stream"
 msgstr ""
 
-#: restream/templates/restream/restreamconfig_detail.html:18
+#: restream/templates/restream/restreamconfig_detail.html:35
 msgid "configured_target_url"
 msgstr ""
 
@@ -85,7 +92,9 @@ msgid "create_new_restreamconfig_configuration_header"
 msgstr ""
 
 #: restream/templates/restream/restreamconfig_form.html:14
+#: restream/templates/restream/restreamconfig_update_form.html:14
 #: rtmp/templates/rtmp/stream_form.html:14
+#: rtmp/templates/rtmp/stream_update_form.html:14
 #: templates/registration/password_change_form.html:13
 #: templates/registration/password_reset_form.html:13
 msgid "submit"
@@ -95,54 +104,66 @@ msgstr ""
 msgid "create_new_restreamconfig_configuration_text_html"
 msgstr ""
 
-#: restream/templates/restream/restreamconfig_list.html:6
+#: restream/templates/restream/restreamconfig_list.html:8
 msgid "restreamconfig_configuration_header"
 msgstr ""
 
-#: restream/templates/restream/restreamconfig_list.html:10
-#: rtmp/templates/rtmp/stream_list.html:10
+#: restream/templates/restream/restreamconfig_list.html:12
+#: rtmp/templates/rtmp/stream_list.html:12
 msgid "create"
 msgstr ""
 
-#: restream/templates/restream/restreamconfig_list.html:17
-#: rtmp/templates/rtmp/stream_list.html:17
+#: restream/templates/restream/restreamconfig_list.html:19
+msgid "active"
+msgstr ""
+
+#: restream/templates/restream/restreamconfig_list.html:20
+#: rtmp/templates/rtmp/stream_list.html:20
 msgid "actions"
 msgstr ""
 
-#: restream/templates/restream/restreamconfig_list.html:26
-#: rtmp/templates/rtmp/stream_list.html:26
+#: restream/templates/restream/restreamconfig_list.html:38
+#: rtmp/templates/rtmp/stream_list.html:38
 msgid "details"
 msgstr ""
 
-#: rtmp/models.py:10
-msgid "rtmp_application_name"
+#: restream/templates/restream/restreamconfig_update_form.html:5
+msgid "update_restreamconfig_configuration_header"
+msgstr ""
+
+#: restream/templates/restream/restreamconfig_update_form.html:21
+msgid "update_restreamconfig_configuration_text_html"
 msgstr ""
 
 #: rtmp/models.py:13
+msgid "rtmp_application_name"
+msgstr ""
+
+#: rtmp/models.py:16
 msgid "application_verbose_name"
 msgstr ""
 
-#: rtmp/models.py:14
+#: rtmp/models.py:17
 msgid "application_verbose_name_plural"
 msgstr ""
 
-#: rtmp/models.py:17
+#: rtmp/models.py:20
 msgid "aplication_class_name"
 msgstr ""
 
-#: rtmp/models.py:24
+#: rtmp/models.py:27
 msgid "stream_application_help"
 msgstr ""
 
-#: rtmp/models.py:25
+#: rtmp/models.py:28
 msgid "stream_stream_help"
 msgstr ""
 
-#: rtmp/models.py:26
+#: rtmp/models.py:29
 msgid "stream_name_help"
 msgstr ""
 
-#: rtmp/models.py:65
+#: rtmp/models.py:68
 msgid "stream_class_name"
 msgstr ""
 
@@ -159,31 +180,31 @@ msgstr ""
 msgid "deleting_configurations_list_header"
 msgstr ""
 
-#: rtmp/templates/rtmp/stream_detail.html:6
+#: rtmp/templates/rtmp/stream_detail.html:12
 msgid "stream_configuration_details_header"
 msgstr ""
 
-#: rtmp/templates/rtmp/stream_detail.html:13
+#: rtmp/templates/rtmp/stream_detail.html:30
 msgid "application"
 msgstr ""
 
-#: rtmp/templates/rtmp/stream_detail.html:16
+#: rtmp/templates/rtmp/stream_detail.html:33
 msgid "stream_configuration_do_not_share_warning"
 msgstr ""
 
-#: rtmp/templates/rtmp/stream_detail.html:19
+#: rtmp/templates/rtmp/stream_detail.html:36
 msgid "how_to_configure_your_encoder_header"
 msgstr ""
 
-#: rtmp/templates/rtmp/stream_detail.html:21
+#: rtmp/templates/rtmp/stream_detail.html:38
 msgid "set_this_stream_server_in_encoder"
 msgstr ""
 
-#: rtmp/templates/rtmp/stream_detail.html:23
+#: rtmp/templates/rtmp/stream_detail.html:40
 msgid "set_this_stream_id_in_encoder"
 msgstr ""
 
-#: rtmp/templates/rtmp/stream_detail.html:31
+#: rtmp/templates/rtmp/stream_detail.html:48
 msgid "you_may_need_to_use_this_full_url_instead"
 msgstr ""
 
@@ -195,8 +216,20 @@ msgstr ""
 msgid "create_new_stream_configuration_text_html"
 msgstr ""
 
-#: rtmp/templates/rtmp/stream_list.html:6
+#: rtmp/templates/rtmp/stream_list.html:8
 msgid "stream_configuration_header"
+msgstr ""
+
+#: rtmp/templates/rtmp/stream_list.html:19
+msgid "publishing"
+msgstr ""
+
+#: rtmp/templates/rtmp/stream_update_form.html:5
+msgid "update_stream_configuration_header"
+msgstr ""
+
+#: rtmp/templates/rtmp/stream_update_form.html:21
+msgid "update_stream_configuration_text_html"
 msgstr ""
 
 #: templates/base.html:36
