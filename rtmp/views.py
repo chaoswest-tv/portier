@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.admin.utils import NestedObjects
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import ListView, DetailView, CreateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from guardian.decorators import permission_required_or_403
 from guardian.shortcuts import assign_perm
 
@@ -62,6 +62,17 @@ class StreamList(ListView):
                   name='dispatch')
 class StreamDetail(DetailView):
     model = models.Stream
+
+
+@method_decorator(login_required, name='dispatch')
+@method_decorator(permission_required_or_403('rtmp.change_stream',
+                  (models.Stream, 'pk', 'pk')),
+                  name='dispatch')
+class StreamChange(UpdateView):
+    model = models.Stream
+    fields = ['application', 'name']
+    template_name_suffix = '_update_form'
+
 
 
 @method_decorator(login_required, name='dispatch')

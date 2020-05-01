@@ -2,8 +2,25 @@
 {% load i18n %}
 {% load bootstrap4 %}
 {% load font_awesome %}
+{% load guardian_tags %}
+
+{% get_obj_perms user for object as "obj_perms" %}
+
 {% block 'content' %}
-<h6>{% trans "restreamconfig_configuration_details_header" %}</h6>
+<div class="row  justify-content-between">
+  <div class="col">
+    <h6>{% trans "restreamconfig_configuration_details_header" %}</h6>
+  </div>
+  {% get_obj_perms user for object as "obj_perms" %}
+  <div class="col-auto">
+  {% if "change_restreamconfig" in obj_perms %}
+  <a href="{% url 'restream:restreamconfig_change' pk=object.pk %}" type="button" class="btn btn-primary">{% fa 'pencil' %} {% trans 'change' %}</a>
+  {% endif %}
+  {% if "delete_restreamconfig" in obj_perms %}
+  <a href="{% url 'restream:restreamconfig_delete' pk=object.pk %}" type="button" class="btn btn-danger">{% fa 'trash' %} {% trans 'delete' %}</a>
+  {% endif %}
+  </div>
+</div>
 <hr class="my-4">
 <div class="row">
   <div class="col-sm border-right">
