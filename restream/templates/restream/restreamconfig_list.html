@@ -2,6 +2,8 @@
 {% load i18n %}
 {% load bootstrap4 %}
 {% load font_awesome %}
+{% load guardian_tags %}
+
 {% block 'content' %}
 <h6>{% trans "restreamconfig_configuration_header" %}</h6>
 <hr class="my-4">
@@ -19,15 +21,20 @@
   </thead>
   <tbody>
     {% for object in object_list %}
+    {% get_obj_perms user for object as "obj_perms" %}
+    {% if "view_restreamconfig" in obj_perms %}
     <tr>
       <th scope="ro">{{ object.name }}</th>
       <td align="right">
         <div class="btn-group" role="group">
         <a href="{% url 'restream:restreamconfig_detail' pk=object.pk %}" type="button" class="btn btn-sm btn-primary">{% trans "details" %}</a>
+        {% if "delete_restreamconfig" in obj_perms %}
         <a href="{% url 'restream:restreamconfig_delete' pk=object.pk %}" type="button" class="btn btn-sm btn-danger">{% fa 'trash' %}</a>
+        {% endif %}
         </div>
       </td>
     </tr>
+    {% endif %}
     {% endfor %}
   </tbody>
 </table>

@@ -1,12 +1,13 @@
 from django.contrib import admin
+from guardian.admin import GuardedModelAdmin
 from .models import Application, Stream
 
 
-class ApplicationAdmin(admin.ModelAdmin):
+class ApplicationAdmin(GuardedModelAdmin):
     fields = ['name']
 
 
-class StreamAdmin(admin.ModelAdmin):
+class StreamAdmin(GuardedModelAdmin):
     fields = ['application', 'stream', 'name', 'publish_counter']
 
 

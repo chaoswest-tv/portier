@@ -1,7 +1,10 @@
+import uuid
+
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext as _
-import uuid
+from django.db.models.signals import pre_delete
+from portier.common import handlers
 
 from . import signals
 
@@ -66,3 +69,7 @@ class Stream(models.Model):
 
     def __str__(self):
         return self.name
+
+
+pre_delete.connect(handlers.remove_obj_perms_connected_with_user, sender=Application)
+pre_delete.connect(handlers.remove_obj_perms_connected_with_user, sender=Stream)

@@ -9,6 +9,8 @@ from django.contrib.admin.utils import NestedObjects
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, DetailView, CreateView, DeleteView
+from guardian.decorators import permission_required_or_403
+from guardian.shortcuts import assign_perm
 
 from . import models
 
@@ -48,22 +50,41 @@ def callback_srs(request):
 
 
 @method_decorator(login_required, name='dispatch')
+@method_decorator(permission_required_or_403('rtmp.add_stream'),
+                  name='dispatch')
 class StreamList(ListView):
     model = models.Stream
 
 
 @method_decorator(login_required, name='dispatch')
+@method_decorator(permission_required_or_403('rtmp.view_stream',
+                  (models.Stream, 'pk', 'pk')),
+                  name='dispatch')
 class StreamDetail(DetailView):
     model = models.Stream
 
 
 @method_decorator(login_required, name='dispatch')
+@method_decorator(permission_required_or_403('rtmp.add_stream'),
+                  name='dispatch')
 class StreamCreate(CreateView):
     model = models.Stream
     fields = ["name", "application"]
 
+    def form_valid(self, form):
+        valid = super().form_valid(form)
+        if valid:
+            user = self.request.user
+            assign_perm('view_stream', user, self.object)
+            assign_perm('change_stream', user, self.object)
+            assign_perm('delete_stream', user, self.object)
+        return valid
+
 
 @method_decorator(login_required, name='dispatch')
+@method_decorator(permission_required_or_403('rtmp.delete_stream',
+                  (models.Stream, 'pk', 'pk')),
+                  name='dispatch')
 class StreamDelete(DeleteView):
     model = models.Stream
     success_url = reverse_lazy('rtmp:stream_list')

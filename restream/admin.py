@@ -1,8 +1,9 @@
 from django.contrib import admin
+from guardian.admin import GuardedModelAdmin
 from .models import RestreamConfig
 
 
-class RestreamConfigAdmin(admin.ModelAdmin):
+class RestreamConfigAdmin(GuardedModelAdmin):
     fields = ['name', 'active', 'stream', 'target']
 
 

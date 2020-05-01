@@ -1,6 +1,8 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
+from django.db.models.signals import pre_delete
+from portier.common import handlers
 
 from rtmp.models import Stream
 
@@ -23,3 +25,6 @@ class RestreamConfig(models.Model):
 
     def __str__(self):
         return '{} to {}'.format(self.stream, self.name)
+
+
+pre_delete.connect(handlers.remove_obj_perms_connected_with_user, sender=RestreamConfig)

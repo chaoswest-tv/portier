@@ -1,6 +1,7 @@
 django>=3.0
 django-registration>=3.1
 django-bootstrap4
+django-guardian
 django-fa
 celery>=4.4
 gunicorn>=20
