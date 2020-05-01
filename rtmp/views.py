@@ -74,7 +74,6 @@ class StreamChange(UpdateView):
     template_name_suffix = '_update_form'
 
 
-
 @method_decorator(login_required, name='dispatch')
 @method_decorator(permission_required_or_403('rtmp.add_stream'),
                   name='dispatch')
