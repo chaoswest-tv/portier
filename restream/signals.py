@@ -1,5 +1,5 @@
 from django.dispatch import receiver
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, post_delete
 from rtmp.signals import stream_active
 from .models import RestreamConfig
 from rtmp.models import Stream
@@ -35,7 +35,7 @@ def update_tasks(sender, **kwargs):
         task.save()
 
 
-@receiver(pre_delete, sender=RestreamConfig)
+@receiver(post_delete, sender=RestreamConfig)
 def delete_tasks(sender, **kwargs):
     instance = kwargs['instance']
     # Get the current task instance if it exists, and remove it
