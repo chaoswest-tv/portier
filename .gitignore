@@ -4,6 +4,8 @@ static/js/bootstrap.bundle.min.js
 static/js/jquery.min.js
 static/fonts
 
+staticfiles
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
