@@ -20,7 +20,8 @@ class ApplicationViewSet(viewsets.ReadOnlyModelViewSet):
 class StreamSerializer(ObjectPermissionsAssignmentMixin, serializers.ModelSerializer):
     class Meta:
         model = Stream
-        fields = ['id', 'stream', 'name', 'application']
+        fields = '__all__'
+        read_only_fields = ['publish_counter']
 
     def get_permissions_map(self, created):
         current_user = self.context['request'].user

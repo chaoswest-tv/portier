@@ -1,11 +1,37 @@
 {% extends 'base.html' %}
+{% load fontawesome_5 %}
 
 {% block 'content' %}
   <div class="jumbotron">
-    <h1 class="display-4">Hello, world!</h1>
-    <p class="leader">Nothing to see here yet. We're working on it, though!</p>
+    <h1 class="display-4">Streaming Magic!</h1>
     <hr class="my-4">
-    <p>Portier will be a pretty cool streaming platform, built by and for nerds. You are welcome to contribute, be it code, ideas, documentation, design or something else entirely.</p>
-    <a class="btn btn-primary btn-lg" href="https://github.com/chaoswest-tv/portier" role="button">Code on GitHub</a>
+    <p>Portier is a pretty cool streaming platform, built by and for nerds. You are welcome to contribute, be it code, ideas, documentation, design or something else entirely.</p>
+    <a class="btn btn-primary btn" href="https://github.com/chaoswest-tv/portier" role="button">Code on GitHub</a>
   </div>
+    <div class="card-deck">
+      <div class="card text-center">
+        <div class="card-body">
+          <h1 class="card-title text-center">{% fa5_icon 'check-double' %}</h1>
+          <h4 class="card-subtitle text-center mb-2">Redundancy</h4>
+          <hr class="mb-3">
+          <p class="card-text">Send us multiple copies of your stream over different network connections. If one of your connections fails, we'll automatically fail over to the next available - within seconds!</p>
+        </div>
+      </div>
+      <div class="card text-center">
+        <div class="card-body">
+          <h1 class="card-title">{% fa5_icon 'code-branch' %}</h1>
+          <h4 class="card-subtitle mb-2">Restreaming</h4>
+          <hr class="mb-3">
+          <p class="card-text">Any stream that's coming into our system can be restreamed to a new target. This works with most of the popular streaming platforms - even multiple at the same time.</p>
+        </div>
+      </div>
+      <div class="card text-center">
+        <div class="card-body">
+          <h1 class="card-title text-center">{% fa5_icon 'hands-helping' %}</h1>
+          <h4 class="card-subtitle text-center mb-2">Awesome Support</h4>
+          <hr class="mb-3">
+          <p class="card-text">Streaming is hard. Especially if you're not a techie. We have streaming-ninjas in our team that will happily support you every step of the way.</p>
+        </div>
+      </div>
+    </div>
 {% endblock %}

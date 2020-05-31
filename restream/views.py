@@ -1,5 +1,6 @@
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import ensure_csrf_cookie
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from guardian.decorators import permission_required_or_403
@@ -12,6 +13,7 @@ from . import forms
 @method_decorator(login_required, name='dispatch')
 @method_decorator(permission_required_or_403('restream.add_restreamconfig'),
                   name='dispatch')
+@method_decorator(ensure_csrf_cookie, name='dispatch')
 class RestreamConfigList(ListView):
     model = models.RestreamConfig
 

@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 {% load bootstrap4 %}
 {% load fontawesome_5 %}
-{% load guardian_tags %}
 
 {% block 'content' %}
 
@@ -19,36 +19,45 @@
   </div>
 </div>
 <hr class="my-4">
-<table class="table">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">{% trans "name" %}</th>
-      <th scope="col">{% trans "active" %}</th>
-      <th scope="col" class="text-right">{% trans "actions" %}</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for object in object_list %}
-    {% get_obj_perms user for object as "obj_perms" %}
-    {% if "view_restreamconfig" in obj_perms %}
-    <tr>
-      <th scope="row">{{ object.name }}</th>
-      <td>
-        {% if object.active %}
-          <span class="text-success">{% fa5_icon 'check-circle' %}</span>
-        {% else %}
-          <span class="text-danger">{% fa5_icon 'times-circle' %}</span>
-        {% endif %}
+<div id="app">
+  <div v-if="isLoading">
+    <div class="my-4 text-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">{% trans "loading..." %}</span>
+      </div>
+    </div>
+  </div>
+  <table v-else class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">{% trans "name" %}</th>
+        <th scope="col">{% trans "active" %}</th>
+        <th scope="col" class="text-right">{% trans "actions" %}</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr v-for="cfg in cfgs">
+      <th scope="row">{% verbatim %}{{cfg.name}}{% endverbatim %}</th>
+      <td v-if="cfg.active">
+        <button v-on:click="toggleActive(cfg)" type="button" class="btn btn-outline-success">
+          {% fa5_icon 'check-circle' %}
+        </button>
       </td>
-      <td align="right">
-        <a href="{% url 'restream:restreamconfig_detail' pk=object.pk %}" type="button" class="btn btn-sm btn-outline-primary">{% trans "details" %}</a>
-        {% if "delete_restreamconfig" in obj_perms %}
-        <a href="{% url 'restream:restreamconfig_delete' pk=object.pk %}" type="button" class="btn btn-sm btn-outline-danger">{% fa5_icon 'trash' %}</a>
-        {% endif %}
+      <td v-else>
+        <button v-on:click="toggleActive(cfg)" type="button" class="btn btn-outline-danger">
+          {% fa5_icon 'times-circle' %}
+        </button>
       </td>
+        <td align="right">
+          <a v-bind:href="detailLink(cfg.id)" type="button" class="btn btn-sm btn-outline-primary">{% trans "details" %}</a>
+          <a v-bind:href="deleteLink(cfg.id)" type="button" class="btn btn-sm btn-outline-danger">{% fa5_icon 'trash' %}</a>
+        </td>
     </tr>
-    {% endif %}
-    {% endfor %}
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
+
+<script src="{% static 'js/vue.min.js' %}"></script>
+<script src="{% static 'js/axios.min.js' %}"></script>
+<script src="{% static 'js/restreamconfig-list.js' %}"></script>
 {% endblock %}

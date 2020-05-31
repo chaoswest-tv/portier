@@ -2,6 +2,8 @@
 static/css/font-awesome.min.css
 static/js/bootstrap.bundle.min.js
 static/js/jquery.min.js
+static/js/vue.min.js
+static/js/axios.min.js
 static/fonts
 
 staticfiles
