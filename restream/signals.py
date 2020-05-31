@@ -33,3 +33,14 @@ def update_tasks(sender, **kwargs):
         task = Task(stream=instance.stream, type='restream', config_id=instance.id,
                     configuration=instance.get_json_config())
         task.save()
+
+
+@receiver(pre_delete, sender=RestreamConfig)
+def delete_tasks(sender, **kwargs):
+    instance = kwargs['instance']
+    # Get the current task instance if it exists, and remove it
+    try:
+        task = Task.objects.filter(config_id=instance.id).get()
+        task.delete()
+    except Task.DoesNotExist:
+        pass
