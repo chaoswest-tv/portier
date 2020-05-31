@@ -23,7 +23,7 @@ def update_tasks(sender, **kwargs):
 
     # Get the current task instance if it exists, and remove it
     try:
-        task = Task.objects.filter(config_id=instance.id).get()
+        task = Task.objects.filter(type='restream', config_id=instance.id).get()
         task.delete()
     except Task.DoesNotExist:
         pass
@@ -40,7 +40,7 @@ def delete_tasks(sender, **kwargs):
     instance = kwargs['instance']
     # Get the current task instance if it exists, and remove it
     try:
-        task = Task.objects.filter(config_id=instance.id).get()
+        task = Task.objects.filter(type='restream', config_id=instance.id).get()
         task.delete()
     except Task.DoesNotExist:
         pass
