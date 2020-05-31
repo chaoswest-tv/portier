@@ -24,5 +24,6 @@ urlpatterns = [
     path('rtmp/', include('rtmp.urls')),
     path('restream/', include('restream.urls')),
     path('concierge/', include('concierge.urls')),
+    path('api/v1/', include('restapi.urls')),
     path('', include('portal.urls')),
 ]

@@ -6,3 +6,6 @@ django-fontawesome-5
 celery>=4.4
 gunicorn>=20
 psycopg2-binary
+djangorestframework
+django-filter
+djangorestframework-guardian
