@@ -21,5 +21,6 @@ class Task(models.Model):
     uuid = models.UUIDField(unique=True, default=uuid.uuid4)
     stream = models.ForeignKey(Stream, on_delete=models.CASCADE)
     type = models.CharField(max_length=100)
+    config_id = models.IntegerField()
     configuration = models.TextField()
     claimed_by = models.ForeignKey(Identity, null=True, blank=True, on_delete=models.CASCADE)

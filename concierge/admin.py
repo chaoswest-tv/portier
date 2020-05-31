@@ -7,7 +7,7 @@ class IdentityAdmin(admin.ModelAdmin):
 
 
 class TaskAdmin(admin.ModelAdmin):
-    fields = ['stream', 'type', 'configuration', 'claimed_by']
+    fields = ['stream', 'type', 'config_id', 'configuration', 'claimed_by']
 
 
 admin.site.register(Identity, IdentityAdmin)

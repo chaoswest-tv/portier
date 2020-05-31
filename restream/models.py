@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.db.models.signals import pre_delete
 from portier.common import handlers
+import json
 
 from rtmp.models import Stream
 
@@ -25,6 +26,15 @@ class RestreamConfig(models.Model):
 
     def __str__(self):
         return '{} to {}'.format(self.stream, self.name)
+
+    def get_json_config(self):
+        config = {
+            'name': self.name,
+            'app': self.stream.application.name,
+            'stream': str(self.stream.stream),
+            'target': self.target
+        }
+        return json.dumps(config)
 
 
 pre_delete.connect(handlers.remove_obj_perms_connected_with_user, sender=RestreamConfig)
