@@ -1,4 +1,4 @@
-django==3.0
+django==3.1.13
 django-registration>=3.1
 django-bootstrap4
 django-guardian
