@@ -30,6 +30,11 @@ def callback_srs(request):
 
     try:
         app_name = json_data['app']
+        # QUIRK this is a weird bug when pushing from OME to SRS. wtf.
+        # for some reason srs interprets the incoming app as app/stream, and passes this on to portier.
+        # only keep the stuff infront of a (potential) slash, and throw away the rest. problem solved^tm
+        app_name = app_name.split('/')[0]
+        # ENDQUIRK
         stream_name = json_data['stream']
         param = json_data['param']
     except KeyError:
