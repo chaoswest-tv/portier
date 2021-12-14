@@ -31,7 +31,7 @@ msgstr "Stream der als Quelle für die Weiterleitung verwendet wird"
 
 #: restream/models.py:12
 msgid "restreamconfig_target_help"
-msgstr "RTMP Ziel URL an die der Stream weitergeleitet wird"
+msgstr "Ziel URL an die der Stream weitergeleitet wird, inklusive Schema (z.B. rtmp://)"
 
 #: restream/models.py:13
 msgid "restreamconfig_name_help"

@@ -9,10 +9,15 @@ from rtmp.models import Stream
 
 
 class RestreamConfig(models.Model):
+    FORMATS = (
+        ('flv', 'flv (RTMP)'),
+        ('mpegts', 'mpegts (SRT)'),
+    )
     stream = models.ForeignKey(Stream, on_delete=models.CASCADE, help_text=_('restreamconfig_stream_help'))
     target = models.CharField(max_length=500, help_text=_('restreamconfig_target_help'))
     name = models.CharField(max_length=100, help_text=_('restreamconfig_name_help'))
     active = models.BooleanField(help_text=_('restreamconfig_activate_help'))
+    format = models.CharField(max_length=6, choices=FORMATS, default='flv', help_text=_('restreamconfig_format_help'))
 
     class Meta:
         verbose_name = _('restreamconfig_verbose_name')
@@ -32,7 +37,8 @@ class RestreamConfig(models.Model):
             'name': self.name,
             'app': self.stream.application.name,
             'stream': str(self.stream.stream),
-            'target': self.target
+            'target': self.target,
+            'format': self.format
         }
         return json.dumps(config)
 

@@ -33,7 +33,7 @@
     <h6>{% trans "how_to_configure_your_encoder_header" %}</h6>
     <hr class="my-4">
     <p>{% trans "set_this_stream_server_in_encoder" %}</p>
-    <p class="mb-4"><code>rtmp://TODO TODO SERVER BASE URL/{{ object.application }}/</code></p>
+    <p class="mb-4"><code>rtmp://ingest.chaoswest.tv:1935/{{ object.application }}/</code></p>
     <p>{% trans "set_this_stream_id_in_encoder" %}</p>
     <div class="input-group mb-4" id="show_hide_stream_key">
       <input readonly class="form-control" type="password" value="{{ object.stream }}">

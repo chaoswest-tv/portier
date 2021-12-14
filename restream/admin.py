@@ -4,7 +4,7 @@ from .models import RestreamConfig
 
 
 class RestreamConfigAdmin(GuardedModelAdmin):
-    fields = ['name', 'active', 'stream', 'target']
+    fields = ['name', 'active', 'stream', 'format', 'target']
 
 
 admin.site.register(RestreamConfig, RestreamConfigAdmin)

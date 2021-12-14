@@ -31,7 +31,7 @@ msgstr "Stream that's being used as source for the restreaming"
 
 #: restream/models.py:12
 msgid "restreamconfig_target_help"
-msgstr "RTMP target url that the stream is being restreamed to"
+msgstr "Target url that the stream is being restreamed to, including schema (e.g. rtmp://)"
 
 #: restream/models.py:13
 msgid "restreamconfig_name_help"

@@ -6,7 +6,7 @@ from . import models
 class RestreamConfigFilteredStreamForm(ModelForm):
     class Meta:
         model = models.RestreamConfig
-        fields = ['name', 'stream', 'target', 'active']
+        fields = ['name', 'stream', 'target', 'format', 'active']
 
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user', None)
